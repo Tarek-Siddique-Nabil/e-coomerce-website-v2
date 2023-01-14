@@ -1,0 +1,67 @@
+#linkBtn {
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+
+    z-index: 1; 
+    animation: animate 60s ease-out infinite;
+  }
+#linkBtn2 {
+    background: linear-gradient(90deg, #C02425,#F0CB35, #cc2695, #c0213c);
+    background-size: 400%;
+
+    z-index: 1; 
+    animation: animate 60s ease-in-out infinite;
+  }
+#heart {
+    color: #ffeb3b;
+    stroke-dasharray: 65;
+     stroke-dashoffset: 655;
+     animation: assi 10s infinite ease;
+     animation-fill-mode: forwards;
+  }
+ #cart{
+    stroke-dasharray: 36;
+    stroke-dashoffset: 36;
+    animation: assinatura 5s infinite ease;
+    animation-fill-mode: forwards;
+ }
+ @keyframes assi {
+    to {
+        stroke-dashoffset: -35;
+        stroke-dasharray: 0;
+      } 
+ }
+  @keyframes assinatura {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+   
+  @keyframes animate {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 400%;
+    }
+  }
+   
+  #linkBtn:hover:before,#linkBtn2:hover::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    left: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    border-radius: 40px;
+    opacity: 0;
+    transition: .5s;   
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+  }
+   
+ 

@@ -1,0 +1,39 @@
+#card{
+    border-radius: 56px;
+background: #e0e0e0;
+box-shadow:  26px 26px 48px #808080,
+             -26px -26px 48px #ffffff;
+    /* border-radius: 15%;
+    background-image: linear-gradient(45deg, #ba0d58 12.50%, #159490 12.50%, #159490 25%, #254499 25%, #254499 37.50%, #409c8a 37.50%, #409c8a 50%, #ba0d58 50%, #ba0d58 62.50%, #159490 62.50%, #159490 75%, #254499 75%, #254499 87.50%, #409c8a 87.50%, #409c8a 100%);
+    background-size: 113.14px 113.14px; */
+    width: 310px;
+    height: 400px;
+    
+    /* background: linear-gradient(45deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);   
+    background-size: 400%; */
+    z-index: 1; 
+    
+
+}
+#card:hover{
+    cursor: pointer;
+
+      /* background-image: linear-gradient(45deg, #ed5f9c 12.50%, #1ed6d0 12.50%, #1ed6d0 25%, #1440b8 25%, #1440b8 37.50%, #c7fff4 37.50%, #c7fff4 50%, #ed5f9c 50%, #ed5f9c 62.50%, #1ed6d0 62.50%, #1ed6d0 75%, #1440b8 75%, #1440b8 87.50%, #c7fff4 87.50%, #c7fff4 100%);
+    background-size: 113.14px 113.14px; */
+    animation: anima 10s linear infinite;
+    animation-fill-mode: forwards;
+}
+@keyframes anima {
+    0% {
+        border-radius: 56px;
+        background: #2cb580;
+        box-shadow:  -26px -26px 48px #196749,
+                     26px 26px 48px #3fffb7;
+    }
+    100% {
+        border-radius: 56px;
+        background: #2c99b5;
+        box-shadow:  26px 26px 48px #195767,
+                     -26px -26px 48px #3fdbff;
+    }
+  }
