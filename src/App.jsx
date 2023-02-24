@@ -1,39 +1,32 @@
 import React from 'react';
-import { QueryClientProvider ,QueryClient} from 'react-query';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Body from './Components/Body/Body';
 import Footer from './Components/Body/Footer';
 import Header from './Components/Body/Header';
+import Cart from './Components/Cart/Cart';
+import { CartContextProvider } from './Components/Hooks/useCart';
 import Shop from './Components/Shop/Shop';
 
 
 const App = () => {
-  const client = new QueryClient();
   return (
-  //  <Router>
-  //   <Header/>
-  //  <Routes>
-  //     <Route path="/" element={<Body />} />
-     
-  //     <Route path='/shop'  element={<Shop/>}/>
  
-  //  </Routes>
-  //  <Footer/>
-  //  </Router>
-  <div>
-    <QueryClientProvider client={client}>
+  <CartContextProvider>
       <Router>
     <Header/>
    <Routes>
       <Route path="/" element={<Body />} />
      
     <Route path='/shop'  element={<Shop/>}/>
+    <Route path='/cart'  element={<Cart/>}/>
  
    </Routes>
   <Footer/>
+  <ToastContainer/>
    </Router>
-      </QueryClientProvider>
-  </div>
+   </CartContextProvider>
+ 
   );
 };
 

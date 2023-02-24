@@ -1,43 +1,129 @@
-import React from "react";
-import { useQuery } from "react-query";
-import getProducts from "../Hooks/getProducts";
+import React, { useContext } from "react";
 import "./Loading.css";
 import "./Shop.css";
-const Shop = () => {
-  const { data, isLoading } = useQuery("product", () => getProducts());
+import "lord-icon-element";
+import useProducts from "../Hooks/getProducts";
+import { CartContext } from "../Hooks/useCart";
 
+
+
+// define "lord-icon" custom element with default properties
+const Shop = () => {
+  const email = "test@gmail.com"
+  const [products, isLoading] = useProducts();
+  const { data, post } = useContext(CartContext);
+  const handleAddCart = async (id) => {
+    const cartItem = {
+      productId: id,
+      email:email,
+      quantity: 1,
+    };
+    await post( cartItem);
+  };
   return (
     <div className=" relative">
       {isLoading !== true ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-5 ">
-          {data?.map((item, index) => (
-       
-          <div id="card" className="flex flex-col justify-center items-center group ">
-            <div>
-              <img className=" rounded-xl group-hover:scale-75 group-hover:-translate-y-16 transition-transform duration-300 delay-75 ease-in-out" style={{width:"280px",height:'220px'}} src={item.image} />
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 justify-items-center gap-y-5 my-6">
+          {products.map((item, index) => (
+            <div
+              key={index}
+              className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            >
+              <a href="#">
+                <img
+                  style={{ width: "100%", height: "300px" }}
+                  className="p-8 rounded-t-lg"
+                  src={item?.image}
+                  alt="product image"
+                />
+              </a>
+              <div className="px-5 pb-5">
+                <a href="#">
+                  <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+                    {item?.title.slice(0, 35)}. . .
+                  </h5>
+                </a>
+                <div className="flex items-center mt-2.5 mb-5">
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>First star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Second star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Third star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Fourth star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    className="w-5 h-5 text-yellow-300"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <title>Fifth star</title>
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                  </svg>
+                  <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
+                    5.0
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-3xl font-bold text-gray-900 dark:text-white">
+                    {item?.price}
+                  </span>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => handleAddCart(item._id)}
+                      className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    >
+                      Add to cart
+                    </button>
+                    <div className="tooltip  tooltip-right" data-tip="View">
+                      <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-1 py-1 text-center dark:bg-sky-200 dark:hover:bg-slate-50 dark:focus:ring-blue-800">
+                        <lord-icon
+                          src="https://cdn.lordicon.com/alnsmmtf.json"
+                          colors="primary:#ee66aa,secondary:#ee8f66"
+                          stroke="75"
+                          trigger="hover"
+                          style={{ width: "40px", height: "40px" }}
+                        ></lord-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="text-center font-bold  group-hover:z-20 group-hover:absolute group-hover:mt-20 transition-transform duration-300 delay-75 ease-in-out">
-                <h2 className="text-2xl">{item.title}</h2>
-                <p className="text-md"><strong>Price: </strong>{item.price}</p>
-              </div>
-              <div className="flex justify-center gap-4 group-hover:z-10 group-hover:absolute group-hover:mt-44  transition-transform duration-300 delay-75 ease-in-out">
-                <button>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 group-hover:stroke-pink-400">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-</svg>
-
-                </button>
-                <button>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 group-hover:stroke-sky-300">
-  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-</svg>
-
-                </button>
-              </div>
-              <div className="flex group-hover:absolute group-hover:mt-64">
-              <button className="border border-black px-3 py-0.5  rounded-xl group-hover:bg-sky-300 bg-teal-300">Buy</button>
-</div>
-         </div>
           ))}
         </div>
       ) : (

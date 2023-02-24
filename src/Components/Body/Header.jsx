@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
+import "lord-icon-element";
+import { CartContext } from "../Hooks/useCart";
+
 const Header = () => {
+  const { data, loading, error, post } = useContext(CartContext);
   return (
     <div className="sticky top-0  z-40">
       <nav className=" bg-white dark:bg-gray-800">
@@ -15,10 +19,30 @@ const Header = () => {
             />
             <div className="w-full flex justify-between md:w-max md:px-0">
               <img
-                src="https://polliprottasha.org/assets/img/polliprottasha.jpg"
+                src="https://hellomama.bijoyit.net/static/media/hello_mama.d20c6edf6f8dc695c10e.jpeg"
                 className="w-14 rounded-full shadow-lg  dark:contrast-100 contrast-200"
                 alt="tailus logo"
               />
+               
+               <label class="relative block md:hidden">
+             
+             <input
+               class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pr-9 pl-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+               placeholder="Search for anything..."
+               type="text"
+               name="search"
+             />
+                <span class="sr-only">Search</span>
+             <span class="absolute inset-y-0 right-0 flex items-center pr-2 hover:cursor-pointer -mt-4">
+               <lord-icon
+                 src="https://cdn.lordicon.com/zniqnylq.json"
+                 colors="primary:#4030e8,secondary:#66d7ee"
+                 stroke="130"
+                 trigger="loop-on-hover"
+                 style={{ width: "30px", height: "30px" }}
+               ></lord-icon>
+             </span>
+           </label>
 
               <div className="flex items-center md:hidden max-h-10">
                 <label
@@ -55,7 +79,7 @@ const Header = () => {
             >
               <div className="flex md:hidden w-full pb-5">
                 <img
-                  src="https://polliprottasha.org/assets/img/polliprottasha.jpg"
+                  src="https://hellomama.bijoyit.net/static/media/hello_mama.d20c6edf6f8dc695c10e.jpeg"
                   className="w-20 rounded-full contrast-200"
                   alt="tailus logo"
                   width="144"
@@ -98,7 +122,7 @@ const Header = () => {
                   <li className="md:pl-2">
                     <label className="swap swap-rotate">
                       {/* <!-- this hidden checkbox controls the state --> */}
-                      <input type="checkbox" />
+                      <input type="checkbox" className="sr-only" />
 
                       {/* <!-- sun icon --> */}
                       <div className="swap-on flex gap-2">
@@ -128,83 +152,77 @@ const Header = () => {
                 </ul>
               </div>
             </div>
-            <div className="xl:flex md:flex gap-5  hidden font-semibold">
-             <NavLink to='/'> <button
-              
-                id="linkBtn"
-                className=" btn-md transition ease-in-out delay-150  text-black    hover:scale-110  px-5 rounded-xl"
-              >
-                Home
-              </button></NavLink>
-             <NavLink to='/shop'> <button
-                id="linkBtn2"
-                className="btn-md transition ease-in-out delay-150  text-black    hover:scale-110  px-5 rounded-xl"
-              >
-                Shop
-              </button></NavLink>
+
+            <div className="xl:flex md:flex gap-5  hidden font-semibold xl:ml-36">
+              <NavLink to="/">
+                {" "}
+                <button
+                  id="linkBtn"
+                  className=" btn-md transition ease-in-out delay-150  text-black    hover:scale-110  px-5 rounded-xl"
+                >
+                  Home
+                </button>
+              </NavLink>
+              <NavLink to="/shop">
+                {" "}
+                <button
+                  id="linkBtn2"
+                  className="btn-md transition ease-in-out delay-150  text-black    hover:scale-110  px-5 rounded-xl"
+                >
+                  Shop
+                </button>
+              </NavLink>
             </div>
+
             <div className="xl:flex md:flex hidden items-center gap-3">
+              <label class="relative block">
+             
+                <input
+                  class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pr-9 pl-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+                  placeholder="Search for anything..."
+                  type="text"
+                  name="search"
+                />
+                   <span class="sr-only">Search</span>
+                <span class="absolute inset-y-0 right-0 flex items-center pr-2 hover:cursor-pointer ">
+                  <lord-icon
+                    src="https://cdn.lordicon.com/zniqnylq.json"
+                    colors="primary:#4030e8,secondary:#66d7ee"
+                    stroke="130"
+                    trigger="loop-on-hover"
+                    style={{ width: "30px", height: "30px" }}
+                  ></lord-icon>
+                </span>
+              </label>
               <div className="indicator group">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
                   <div className="indicator">
-                    <svg
-                      id="heart"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                      className="w-6 h-6 stroke-black dark:stroke-slate-50 group-hover:scale-125 transition-transform ease-linear duration-200 group-hover:stroke-pink-400 "
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                      />
-                    </svg>
+                    <lord-icon
+                      src="https://cdn.lordicon.com/ytuosppc.json"
+                      trigger="hover"
+                      stroke="120"
+                      style={{ width: "35px", height: "35px" }}
+                    ></lord-icon>
 
-                    <span className="badge badge-sm indicator-item">8</span>
+                    <span className="badge badge-sm indicator-item">5</span>
                   </div>
                 </label>
               </div>
               <div className="dropdown dropdown-end group">
                 <label tabIndex={0} className="btn btn-ghost btn-circle">
-                  <div className="indicator">
-                    <svg
-                    id="cart"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={1.5}
-                     
-                      className="w-6 h-6 stroke-black dark:stroke-slate-50 group-hover:scale-125 transition-transform ease-linear duration-200 group-hover:stroke-pink-400"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                      />
-                    </svg>
+                  <NavLink to="/cart" className="indicator">
+                    <lord-icon
+                      src="https://cdn.lordicon.com/lpddubrl.json"
+                      stroke="150"
+                      trigger="hover"
+                      style={{ width: "35px", height: "35px" }}
+                    ></lord-icon>
 
-                    <span className="badge badge-sm indicator-item">8</span>
-                  </div>
+                    <span className="badge badge-sm indicator-item">
+                      {data.length || 0}
+                    </span>
+                  </NavLink>
                 </label>
-                <ul
-                  tabIndex={0}
-                  className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-                >
-                  <li>
-                    <a className="justify-between">
-                      Profile
-                      <span className="badge">New</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a>Settings</a>
-                  </li>
-                  <li>
-                    <a>Logout</a>
-                  </li>
-                </ul>
               </div>
 
               <div className="dropdown dropdown-end">
